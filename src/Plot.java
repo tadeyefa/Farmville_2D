@@ -6,19 +6,24 @@ public class Plot {
     public Plot() {
 //        plantName = "tulip";
         numberOfPlants = (int)(Math.random() * 100) + 10; // random numbers from 10-110 (non-inclusive)
-        needsWater = true;
+        needsWater = false;
 
         int num = (int)(Math.random() * 5);
         if (num == 0) {
-            plantName = "tulip";
-        } else if (num == 1) {
-            plantName = "rose";
-        } else if (num == 2) {
-            plantName = "daisy";
-        } else if (num == 3) {
             plantName = "sunflower";
-        } else if (num == 4) {
-            plantName = "lily";
+        } else if (num == 1) {
+            plantName = "carrot";
+        } else if (num == 2) {
+            plantName = "tomato";
+        } else if (num == 3) {
+            plantName = "corn";
+        } else {
+            plantName = "empty";
+            numberOfPlants = 0;
         }
+    }
+
+    public void printPlot() {
+        System.out.println("The " + plantName + " plot has " + numberOfPlants + " and it is " + needsWater + " that it needs water.");
     }
 }
