@@ -7,7 +7,7 @@ public class MyFarm {
     public MyFarm() {
         System.out.println("Hello from my farm!");
         Plot leila = new Plot();
-        leila.printPlot();
+//        leila.printPlot();
 
         grid = new Plot[4][3];
 
@@ -18,10 +18,24 @@ public class MyFarm {
             }
         }
         totalPlants();
+        printPlantNames();
     }
     public void totalPlants() {
         // how many total plants are there in the grid?
-        System.out.println("There are " + (grid.length * grid.length) + " in the plot.");
+        int sumOfPlants = 0;
+        for (int e=0;e<grid.length;e++) {
+            for (int c=0;c<grid[e].length;c++) {
+                sumOfPlants += grid[e][c].numberOfPlants;
+            }
+        }
+        System.out.println(sumOfPlants);
     }
-
+    public void printPlantNames() {
+        // print the name of each plant in each row and column and its indexes
+        for (int r=0;r<grid.length;r++) {
+            for (int c=0;c<grid[r].length;c++) {
+                System.out.println("row: " + r + " col: " + c + " " + grid[r][c].plantName);
+            }
+        }
+    }
 }
