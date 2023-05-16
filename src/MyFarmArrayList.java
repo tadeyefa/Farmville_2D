@@ -13,6 +13,12 @@ public class MyFarmArrayList {
             row.add(new Plot());
             row.get(p).printPlot();
         }
+//        row.add(new Plot());
+//        System.out.println(row.size());
+
+        row.remove(0);
+        row.add(new Plot());
+        row.add(new Plot());
         row.add(new Plot());
         System.out.println(row.size());
     }
