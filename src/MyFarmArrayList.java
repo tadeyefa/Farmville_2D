@@ -31,6 +31,12 @@ public class MyFarmArrayList {
         printPlantNames();
         addCorn();
         printPlantNames();
+        tomatoLocations();
+        totalCarrots();
+        averageNumberOfPlants();
+        numberOfCarrotPlots();
+        numberOfEmptyPlots();
+        everyOtherNeedsWater();
     }
     public void totalPlants() {
         // how many total plants are there in the row?
@@ -67,5 +73,57 @@ public class MyFarmArrayList {
         row.add(3, corn);
         corn.printPlot();
     }
+    public void tomatoLocations() {
+        // print indexes of all tomato plants
+        // call printPlantNames() method to make sure you're getting the correct indexes
+        for (int m=0;m<row.size();m++) {
+            if (row.get(m).plantName.equals("tomato")) {
+                System.out.println(m);
+            }
+        }
+    }
+    public void totalCarrots() {
+        // how many total carrot plants are there?
+        int carrots = 0;
+        for (Plot c : row) {
+            if (c.plantName.equals("carrot")) {
+                carrots += c.numberOfPlants;
+            }
+        }
+        System.out.println("There are " + carrots + " total carrots in the plot");
+    }
+    public void averageNumberOfPlants() {
+        // what is the average number of plants across the whole row?
+        int average = 0;
+        for (Plot g : row) {
+            average += g.numberOfPlants;
+        }
+        System.out.println("There is an average of " + average/row.size() + " plants in this row");
+    }
+    public void numberOfCarrotPlots() {
+        // how many plots have carrots on them
+        // call printPlantNames() method to check
+        int carrotPlots = 0;
+        for (int t=0;t<row.size();t++) {
+            if (row.get(t).plantName.equals("carrot")) {
+                carrotPlots += 1;
+            }
+        }
+        System.out.println("The total number of carrot plots is " + carrotPlots);
+    }
+    public void numberOfEmptyPlots() {
+        // how many plots are empty
+        // call printPlantNames() method to check
+        int emptyPlots = 0;
+        for (int e=0;e<row.size();e++) {
+            if (row.get(e).plantName.equals("empty")) {
+                emptyPlots += 1;
+            }
+        }
+        System.out.println("The total number of empty plots is " + emptyPlots);
+    }
+    public void everyOtherNeedsWater(){
+        // change the value of needsWater to be true for every other plot
 
+    }
 }
