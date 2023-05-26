@@ -27,6 +27,7 @@ public class MyFarmArrayList {
 //        System.out.println(row.size());
         totalPlants();
         printPlantNames();
+        printRowInfo();
         addSunflower();
         printPlantNames();
         addCorn();
@@ -36,7 +37,10 @@ public class MyFarmArrayList {
         averageNumberOfPlants();
         numberOfCarrotPlots();
         numberOfEmptyPlots();
+        System.out.println("changed needs water");
         everyOtherNeedsWater();
+        printRowInfo();
+        plantWithMaxNumber();
     }
     public void totalPlants() {
         // how many total plants are there in the row?
@@ -52,6 +56,12 @@ public class MyFarmArrayList {
             System.out.print(k + ": " + row.get(k).plantName + " \t");
         }
         System.out.println();
+    }
+    public void printRowInfo() {
+        // use the printPlotInfo() method in Plot.java to print all information for each plot in the row
+        for (Plot a : row) {
+            a.printPlot();
+        }
     }
     public void addSunflower() {
         // add a sunflower plot to the end of the row with 42 plants that need water
@@ -124,6 +134,45 @@ public class MyFarmArrayList {
     }
     public void everyOtherNeedsWater(){
         // change the value of needsWater to be true for every other plot
-
+        for (int n=0;n<row.size();n++) {
+            if (n % 2 == 1) { // n is odd
+                row.get(n).needsWater = false;
+            }
+            else { // n is even
+                row.get(n).needsWater = true;
+            }
+        }
+    }
+    public void plantWithMaxNumber() {
+        // which plant type has the most total plants?
+        int numCorn = 0;
+        int numSunflower = 0;
+        int numTomato = 0;
+        int numCarrot = 0;
+        for (int c=0;c<row.size();c++) {
+            switch (row.get(c).plantName) {
+                case "corn":
+                    numCorn += row.get(c).numberOfPlants;
+                    break;
+                case "sunflower":
+                    numSunflower += row.get(c).numberOfPlants;
+                    break;
+                case "tomato":
+                    numTomato += row.get(c).numberOfPlants;
+                    break;
+                default:
+                    numCarrot += row.get(c).numberOfPlants;
+                    break;
+            }
+        }
+        if (numCorn > numCarrot && numCorn > numSunflower && numCorn > numTomato) {
+            System.out.println("Corn has the most total plants with " + numCorn);
+        } if (numTomato > numCarrot && numTomato > numSunflower && numTomato > numCorn) {
+            System.out.println("Tomato has the most total plants with " + numTomato);
+        } if (numCarrot > numCorn && numCarrot > numSunflower && numCarrot > numTomato) {
+            System.out.println("Carrot has the most total plants with " + numCarrot);
+        } else {
+            System.out.println("Sunflower has the most total plants with " + numSunflower);
+        }
     }
 }
